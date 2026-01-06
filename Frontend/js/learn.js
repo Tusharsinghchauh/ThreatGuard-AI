@@ -3,7 +3,7 @@ async function loadTopic(topic) {
   contentDiv.innerHTML = "<p>Loading content...</p>";
 
   const res = await fetch(
-    `http://127.0.0.1:8000/learn/topic?name=${topic}`
+    `https://threatguard-ai.onrender.com/learn/topic?name=${topic}`
   );
 
   const data = await res.json();
