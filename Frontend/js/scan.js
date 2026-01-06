@@ -1,5 +1,5 @@
 // BASE backend URL ONLY
-const BACKEND_URL = 'http://127.0.0.1:8000';
+const BACKEND_URL = 'https://threatguard-ai.onrender.com';
 
 function escapeHtml(s){
   if(!s && s !== 0) return '';
