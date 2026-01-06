@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Learn Cyber Safety</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<nav class="navbar">
+  <h2>🛡️ AI Cyber Security Assistant</h2>
+  <div>
+    <a href="index.html">Home</a>
+    <a href="scan.html">Scan</a>
+    <a href="website.html">Websites</a>
+    <a href="learn.html">Learn</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <h1>Cyber Safety Basics</h1>
+  <p>Click a topic to learn simple and important cyber safety tips.</p>
+
+  <!-- Topic Cards -->
+  <div class="cards" id="topicCards">
+    <button class="card" data-topic="passwords">🔐 Password Security</button>
+    <button class="card" data-topic="phishing">🎣 Phishing Awareness</button>
+    <button class="card" data-topic="browsing">🌐 Safe Browsing</button>
+    <button class="card" data-topic="downloads">⬇️ Safe Downloads</button>
+    <button class="card" data-topic="payments">💳 Online Payments</button>
+    <button class="card" data-topic="social_media">📱 Social Media Safety</button>
+    <button class="card" data-topic="device_security">💻 Device Security</button>
+  </div>
+
+  <div id="topicContent" class="card" style="margin-top:20px;">
+    <h2>Pick a topic</h2>
+    <p>Select a topic above to view simple tips and actionable steps.</p>
+  </div>
+
+  <p style="margin-top:20px"><a href="index.html">← Back to home</a></p>
+</section>
+
+<script>
+  const topics = {
+    passwords: {
+      title: 'Password Security',
+      body: `
+        <ul>
+          <li>Use a long, unique password per important account (12+ characters).</li>
+          <li>Enable two-factor authentication (2FA) where available.</li>
+          <li>Use a reputable password manager to generate and store credentials securely.</li>
+        </ul>`
+    },
+    phishing: {
+      title: 'Phishing Awareness',
+      body: `
+        <ul>
+          <li>Be suspicious of unexpected emails, especially those asking for sensitive info.</li>
+          <li>Verify links by hovering before clicking and check the domain carefully.</li>
+          <li>When in doubt, contact the organization by a known-good channel.</li>
+        </ul>`
+    },
+    browsing: {
+      title: 'Safe Browsing',
+      body: `
+        <ul>
+          <li>Keep your browser and extensions up to date.</li>
+          <li>Use HTTPS sites for sensitive transactions.</li>
+          <li>Block or limit unnecessary browser extensions and clear cookies periodically.</li>
+        </ul>`
+    },
+    downloads: {
+      title: 'Safe Downloads',
+      body: `
+        <ul>
+          <li>Download software only from official vendor sites or trusted sources.</li>
+          <li>Scan downloaded files with antivirus or VirusTotal before opening.</li>
+          <li>Be cautious with email attachments; confirm with the sender if unexpected.</li>
+        </ul>`
+    },
+    payments: {
+      title: 'Online Payments',
+      body: `
+        <ul>
+          <li>Use credit cards or secure payment services rather than direct bank transfers.</li>
+          <li>Check for HTTPS and padlock icon on checkout pages.</li>
+          <li>Monitor statements for unexpected charges and enable alerts.</li>
+        </ul>`
+    },
+    social_media: {
+      title: 'Social Media Safety',
+      body: `
+        <ul>
+          <li>Review privacy settings and limit public personal information.</li>
+          <li>Be wary of suspicious friend requests or messages with links.</li>
+          <li>Think before sharing: attackers use personal details for scams.</li>
+        </ul>`
+    },
+    device_security: {
+      title: 'Device Security',
+      body: `
+        <ul>
+          <li>Keep OS and apps updated; enable automatic updates where possible.</li>
+          <li>Use a device passcode and enable remote-locate/erase features.</li>
+          <li>Back up important data regularly to offline or encrypted backups.</li>
+        </ul>`
+    }
+  };
+
+  // Optional curated sites for each topic (shown on the Learn page)
+  const topicsSites = {
+    passwords: [
+      {name: 'Have I Been Pwned', url: 'https://haveibeenpwned.com'},
+      {name: '1Password Blog', url: 'https://1password.com/blog/'}
+    ],
+    phishing: [
+      {name: 'Phishing.org', url: 'https://phishing.org'},
+      {name: 'Google Safety Center', url: 'https://safety.google/'}
+    ],
+    browsing: [
+      {name: 'Mozilla Security', url: 'https://www.mozilla.org/security'},
+      {name: 'Electronic Frontier Foundation', url: 'https://www.eff.org'}
+    ],
+    downloads: [
+      {name: 'VirusTotal', url: 'https://www.virustotal.com'},
+      {name: 'Ninite', url: 'https://ninite.com'}
+    ],
+    payments: [
+      {name: 'Consumer Financial Protection Bureau', url: 'https://www.consumerfinance.gov'},
+      {name: 'PCI Security Standards', url: 'https://www.pcisecuritystandards.org'}
+    ],
+    social_media: [
+      {name: 'Privacy.com', url: 'https://privacy.com'},
+      {name: 'StaySafeOnline', url: 'https://staysafeonline.org'}
+    ],
+    device_security: [
+      {name: 'Microsoft Security', url: 'https://www.microsoft.com/security'},
+      {name: 'Apple Support - Security', url: 'https://support.apple.com/security'}
+    ]
+  };
+
+  function loadTopic(key){
+    const content = document.getElementById('topicContent');
+    const topic = topics[key];
+    if (!topic) return;
+
+    let html = `<h2>${topic.title}</h2>${topic.body}`;
+
+    const sites = topicsSites[key] || [];
+    if (sites.length) {
+      html += '<h3>Related websites</h3><ul>' + sites.map(s => `<li><a href="${s.url}" target="_blank" rel="noopener noreferrer">${s.name}</a></li>`).join('') + '</ul>';
+    }
+
+    // Add quick link to search more sites
+    const encoded = encodeURIComponent(topic.title);
+    html += `<p><a class="btn" href="website.html?query=${encoded}">Find more related websites</a></p>`;
+
+    content.innerHTML = html;
+    content.scrollIntoView({behavior:'smooth', block:'start'});
+
+    // highlight selected button
+    document.querySelectorAll('#topicCards .card').forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.topic === key);
+    });
+  }
+
+  // attach click handlers to topic cards
+  document.addEventListener('DOMContentLoaded', ()=>{
+    document.querySelectorAll('#topicCards .card').forEach(btn => {
+      btn.addEventListener('click', ()=> loadTopic(btn.dataset.topic));
+    });
+
+    // nav active
+    document.querySelectorAll('.navbar a').forEach(a => { try{ if (window.location.pathname.endsWith(a.getAttribute('href'))) a.classList.add('active') }catch(e){} });
+  });
+</script>
+
+</body>
+</html>

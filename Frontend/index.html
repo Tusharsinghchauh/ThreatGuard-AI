@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>AI Cyber Security Assistant</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<nav class="navbar">
+  <h2>🛡️ AI Cyber Security Assistant</h2>
+  <div>
+    <a href="index.html">Home</a>
+    <a href="scan.html">Scan</a>
+    <a href="website.html">Websites</a>
+    <a href="learn.html">Learn</a>
+  </div>
+</nav>
+
+  <section class="hero container">
+    <h1>AI Cyber Security Assistant</h1>
+    <p>
+      Backend built with <b>FastAPI</b>, AI powered by <b>Google Gemini</b>.
+      Scan files, find cyber resources, and learn to stay safe online.
+    </p>
+
+    <div class="cards">
+      <a href="scan.html" class="card"><div class="title">Scan a File</div><div class="muted">Analyze suspicious files</div></a>
+      <a href="website.html" class="card"><div class="title">Search Cyber Websites</div><div class="muted">Find curated learning & tools</div></a>
+      <a href="learn.html" class="card"><div class="title">Learn Safety Basics</div><div class="muted">Short practical tips</div></a>
+    </div>
+  </section>
+
+  <script>
+    // mark active nav link on pages without JS bundle
+    document.addEventListener('DOMContentLoaded', ()=>{
+      document.querySelectorAll('.navbar a').forEach(a => { try{ if (window.location.pathname.endsWith(a.getAttribute('href'))) a.classList.add('active') }catch(e){} });
+    });
+  </script>
+
+  <footer>
+    Backend: FastAPI · AI: Google Gemini
+  </footer>
+
+</body>
+</html>

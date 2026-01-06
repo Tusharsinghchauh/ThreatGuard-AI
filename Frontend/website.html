@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Cyber Security Websites</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<nav class="navbar">
+  <h2>🛡️ AI Cyber Security Assistant</h2>
+  <div>
+    <a href="index.html">Home</a>
+    <a href="scan.html">Scan</a>
+    <a href="website.html">Websites</a>
+    <a href="learn.html">Learn</a>
+  </div>
+</nav>
+
+<section class="hero container">
+  <div style="max-width:700px;margin:0 auto;display:flex;gap:8px;align-items:center;justify-content:center">
+    <input type="text" id="searchInput" placeholder="Search for cyber security topics..." style="flex:1;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit">
+    <button id="searchBtn" type="button">Search <span id="searchSpinner" class="spinner" style="display:none"></span></button>
+  </div>
+
+  <div id="backendStatus" class="backend-status" style="display:none; margin-top:8px;color:#f87171"></div>
+  <button id="sampleBtn" type="button" style="display:none; margin-top:8px;">Use sample results</button>
+
+  <div id="results" class="results-grid"></div>
+
+  <p style="margin-top:30px;color:#9aa4b2">
+    Recommendations are AI-assisted using Gemini through a FastAPI backend.
+  </p>
+</section>
+
+<script src="js/website.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const params = new URLSearchParams(window.location.search);
+    const q = params.get('query');
+    if (q) {
+      const input = document.getElementById('searchInput');
+      input.value = q;
+      // small delay to ensure scripts have initialized
+      setTimeout(() => { try { searchWebsites(); } catch (e) { console.warn('searchWebsites not available yet', e); } }, 50);
+    }
+  });
+</script>
+</body>
+</html>

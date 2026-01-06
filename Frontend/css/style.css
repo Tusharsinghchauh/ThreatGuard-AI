@@ -1,0 +1,88 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+
+:root{
+  --bg:#0b1220;
+  --panel:#071029;
+  --muted:#9aa4b2;
+  --accent:#60a5fa;
+  --success:#10b981;
+  --warning:#f59e0b;
+  --danger:#ef4444;
+  --card:#071427;
+}
+
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:'Inter',system-ui,Segoe UI,Roboto,Helvetica,Arial,'Noto Sans',sans-serif;
+  background:linear-gradient(180deg,var(--bg),#041025 120%);
+  color:#e6eef6;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+
+.navbar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:1rem;
+  padding:14px 28px;
+  background:rgba(2,6,23,0.6);
+  backdrop-filter: blur(6px);
+}
+
+.navbar h2{margin:0;font-size:18px}
+.navbar div{display:flex;gap:12px}
+.navbar a{color:var(--muted); text-decoration:none; padding:6px 10px; border-radius:8px; font-weight:600}
+.navbar a:hover{background:rgba(96,165,250,0.08); color:var(--accent)}
+.navbar a.active{background:rgba(96,165,250,0.12); color:var(--accent)}
+
+.container{max-width:1100px;margin:0 auto;padding:28px}
+.hero{padding:64px 20px;text-align:center}
+.hero h1{font-size:40px;margin:0 0 8px}
+.hero p{color:var(--muted); max-width:800px;margin:12px auto}
+
+.cards{display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:18px; margin-top:28px}
+.card{display:flex;flex-direction:column; gap:8px; padding:18px; background:var(--card); border-radius:12px; text-decoration:none; color:inherit; transition:transform .2s, box-shadow .2s; box-shadow: 0 2px 10px rgba(2,6,23,0.4)}
+.card:hover{transform:translateY(-6px); box-shadow:0 12px 30px rgba(2,6,23,0.6)}
+.card .title{font-weight:700}
+.card .muted{color:var(--muted); font-size:14px}
+.card button{padding:8px 12px;border-radius:8px;border:none;background:var(--accent);color:white; cursor:pointer}
+
+.footer{padding:30px;text-align:center;color:var(--muted);font-size:13px}
+
+/* Learn page */
+#topicContent{padding:18px;background:linear-gradient(180deg, rgba(8,12,20,0.35), rgba(6,8,14,0.25)); border-radius:10px}
+.cards .card{cursor:pointer}
+.cards .card.active{outline:3px solid rgba(96,165,250,0.07)}
+
+/* Website results */
+.results-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:16px;margin-top:20px}
+.result-card{padding:14px;background:linear-gradient(180deg, rgba(7,16,28,0.6), rgba(8,18,28,0.4)); border-radius:10px; display:flex;flex-direction:column; gap:10px}
+.result-card h3{margin:0;font-size:16px}
+.result-card p{margin:0;color:var(--muted);font-size:14px}
+.result-card a{color:var(--accent);text-decoration:none}
+.result-card .url{font-size:12px;color:var(--muted);word-break:break-all}
+
+/* Scan page */
+.file-drop{border:1px dashed rgba(255,255,255,0.06); padding:18px; border-radius:10px; display:flex; align-items:center; gap:12px; justify-content:center}
+.file-drop input[type=file]{display:none}
+.file-drop button{background:transparent;border:1px solid rgba(255,255,255,0.04); padding:8px 10px;border-radius:8px;color:var(--accent)}
+
+.status{margin-top:12px;padding:10px;border-radius:8px;background:rgba(255,255,255,0.02);color:var(--muted)}
+.scan-result{margin-top:12px;padding:14px;background:linear-gradient(180deg, rgba(7,20,30,0.6), rgba(8,16,22,0.4)); border-radius:10px;color:var(--muted)}
+.scan-result table{width:100%;border-collapse:collapse;margin-bottom:10px}
+.scan-result td{padding:8px 6px;border-bottom:1px solid rgba(255,255,255,0.03)}
+.scan-result .hash{color:#c7d2fe;font-family:monospace;word-break:break-all}
+.badge{display:inline-block;padding:6px 10px;border-radius:999px;font-weight:700;font-size:12px}
+.badge.safe{background:rgba(16,185,129,0.15); color:var(--success)}
+.badge.suspicious{background:rgba(245,158,11,0.12); color:var(--warning)}
+.badge.risky{background:rgba(239,68,68,0.12); color:var(--danger)}
+
+/* Spinner */
+.spinner{width:20px;height:20px;border-radius:50%;border:2px solid rgba(255,255,255,0.08);border-top-color:var(--accent);animation:spin .9s linear infinite;margin-left:8px}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* Responsive */
+@media (max-width:700px){.hero h1{font-size:28px}.navbar{padding:12px}.container{padding:16px}}
+

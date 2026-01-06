@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>File Scanner</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<nav class="navbar">
+  <h2>🛡️ AI Cyber Security Assistant</h2>
+  <div>
+    <a href="index.html">Home</a>
+    <a href="scan.html">Scan</a>
+    <a href="website.html">Websites</a>
+    <a href="learn.html">Learn</a>
+  </div>
+</nav>
+
+<section class="hero container">
+  <h1>AI File Scanner</h1>
+  <p>Upload a file to analyze it using AI.</p>
+
+  <div class="file-drop" id="fileDrop">
+    <label for="fileInput" style="cursor:pointer">Click to select or drag a file here</label>
+    <input type="file" id="fileInput">
+  </div>
+  <br>
+  <div style="display:flex;gap:10px;align-items:center">
+    <button id="scanBtn" type="button">Scan File <span id="scanSpinner" class="spinner" style="display:none"></span></button>
+    <button id="sampleScanBtn" type="button" style="display:none;">Use sample scan</button>
+  </div>
+
+  <div id="backendStatus" class="backend-status" style="display:none; margin-top:8px;color:#f87171"></div>
+
+  <div id="scanStatus" class="status">Waiting for file...</div>
+
+  <div id="scanResult" class="scan-result"></div>
+</section>
+
+<script src="js/scan.js"></script>
+</body>
+</html>
