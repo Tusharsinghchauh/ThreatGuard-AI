@@ -5,7 +5,6 @@
 
 ---
 
-![ThreatGuard AI Banner](./assets/banner.png)
 
 ## 🚀 Project Overview
 
@@ -33,7 +32,6 @@ Upload any file and get an instant AI‑assisted security analysis.
 * AI verdict: **Safe / Suspicious / Risky**
 * Plain‑English explanation
 
-![File Scanner Screenshot](./assets/file-scan.png)
 
 ---
 
@@ -48,7 +46,6 @@ Search for cybersecurity topics and get **trusted website recommendations**.
 * Category tag (Learning / Tools / News)
 * Direct visit button
 
-![Websites Finder Screenshot](./assets/websites.png)
 
 ---
 
@@ -66,7 +63,6 @@ A clean learning section with essential cyber‑safety topics.
 * Social Media Safety
 * Device Security
 
-![Learning Section Screenshot](./assets/learn.png)
 
 ---
 
