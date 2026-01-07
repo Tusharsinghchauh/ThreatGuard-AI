@@ -25,18 +25,20 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-from fastapi.staticfiles import StaticFiles
-from fastapi.responses import FileResponse
 import os
+from fastapi.staticfiles import StaticFiles
 
-# Path to frontend folder (sibling of Backend)
-FRONTEND_DIR = os.path.join(os.path.dirname(__file__), "..", "Frontend")
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+FRONTEND_DIR = os.path.join(BASE_DIR, "Frontend")
 
-# Serve CSS and JS assets
-app.mount("/css", StaticFiles(directory=os.path.join(FRONTEND_DIR, "css")), name="css")
-app.mount("/js", StaticFiles(directory=os.path.join(FRONTEND_DIR, "js")), name="js")
+if os.path.exists(os.path.join(FRONTEND_DIR, "css")):
+    app.mount(
+        "/css",
+        StaticFiles(directory=os.path.join(FRONTEND_DIR, "css")),
+        name="css"
+    )
 
-# Serve main pages via explicit routes to avoid conflicts with API paths
+
 @app.get("/")
 def index():
     return FileResponse(os.path.join(FRONTEND_DIR, "index.html"))
